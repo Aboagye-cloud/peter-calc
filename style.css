@@ -2,49 +2,86 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background-color: #0f0f12; /* Deep black background */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  /* Dark rich gradient background */
+  background: radial-gradient(circle at center, #1b2028 0%, #0d0f12 100%);
+  color: #ffffff;
 }
 
-.calculator {
-  background-color: #1a1a1f; /* Charcoal black body */
-  border: 2px solid #e50914; /* Bold red border */
-  border-radius: 16px;
+/* Calculator Container */
+.calculator-card {
+  background: #171a21;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.6);
   width: 340px;
-  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.2);
+}
+
+/* Header detail */
+.calculator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 4px;
 }
 
 .brand {
-  color: #e50914; /* Brand Red */
-  font-weight: 800;
-  text-align: center;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #6c727f;
 }
 
-.display {
-  width: 100%;
-  height: 70px;
-  background-color: #0d0d11;
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 2rem;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #6366f1;
+}
+
+/* Display Screen */
+.display-container {
+  background: #0f1117;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
   text-align: right;
-  padding: 10px 15px;
-  margin-bottom: 20px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.previous-operand {
+  font-size: 0.9rem;
+  color: #6c727f;
+  min-height: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.current-operand {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 400;
+  text-align: right;
   outline: none;
 }
 
+/* Keypad Grid */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -52,50 +89,60 @@ body {
 }
 
 .btn {
-  background-color: #26262b; /* Dark gray for standard buttons */
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  height: 55px;
-  font-size: 1.2rem;
-  font-weight: bold;
+  height: 60px;
+  background: #20242f;
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  font-size: 1.25rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn:hover {
+  background: #2a2f3d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-  transform: scale(0.95);
+  transform: translateY(0);
 }
 
-.btn.operator {
-  background-color: #381014; 
-  color: #ff4d4d;
+/* Key Colors & Accents */
+.btn-action {
+  color: #f87171;
+  background: #252026;
 }
 
-.btn.operator:hover {
-  background-color: #e50914;
-  color: #fff;
+.btn-action:hover {
+  background: #33272b;
 }
 
-.btn.control {
-  background-color: #404040;
+.btn-operator {
+  color: #818cf8;
+  background: #1f2338;
 }
 
-.btn.equal {
-  background-color: #e50914; /* Bright red for "=" */
-  color: #fff;
+.btn-operator:hover {
+  background: #282d4a;
+}
+
+.btn-equal {
+  background: #6366f1;
+  color: #ffffff;
+  font-weight: 600;
   grid-row: span 2;
-  height: 122px;
+  height: 100%;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
 }
 
-.btn.equal:hover {
-  background-color: #ff1a1a;
+.btn-equal:hover {
+  background: #4f46e5;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
 }
 
-.btn.zero {
+.btn-zero {
   grid-column: span 2;
-}
-
-.btn:hover:not(.operator):not(.equal) {
-  background-color: #333339;
 }
